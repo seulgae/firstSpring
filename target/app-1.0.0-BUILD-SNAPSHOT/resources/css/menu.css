@@ -13,7 +13,6 @@ ul {
     list-style-type: none;
     height: 48px;
     width: 1000px;
-    background-color: #000000;
     display: flex;
     margin: 0px auto;
 }
@@ -46,4 +45,21 @@ ul > li > a:hover {
     padding-left:40px;
     margin-right:auto;
     display: flex;
+}
+
+div#slide {    /* 이미지 1개의 크기를 적용 */
+    width: 1500px;
+    height: 800px;
+
+    margin: 0px auto;
+    overflow: hidden;
+    /* 부모요소 영역보다 더 큰 자식요소의
+    범람한 외부영역을 숨겨줌*/
+    /* 슬라이드쇼 방향키의 위치기준을
+    적용하기 위한 포지션 */
+    position: relative;
+}
+div.swiper-button-prev,
+div.swiper-button-next{
+    color:#d3d3d3;
 }

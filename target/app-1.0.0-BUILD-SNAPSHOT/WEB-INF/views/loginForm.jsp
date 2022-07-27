@@ -13,33 +13,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 </head>
 <body>
-<div id="menu">
-  <ul>
-    <li id="logo"><a href="<c:url value='/'/>">SeulgaeToyProject</a></li>
-    <li><a href="<c:url value='/'/>">Info</a></li>
-    <li><a href="<c:url value='/board/list'/>">Portfolio</a></li>
-    <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
-    <li><a href="<c:url value='/register/add'/>">Sing in</a></li>
-<%--    <li><a href=""><i class="fa fa-search"></i></a></li>--%>
-  </ul>
+<c:import url="../views/include/header.jsp" charEncoding="UTF-8" />
+<div id="wrap">
+  <form action="<c:url value="/login/login"/>" method="post" onsubmit="return formCheck(this);">
+    <h3 id="title">Login</h3>
+    <div id="msg">
+      <c:if test="${not empty param.msg}">
+        <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
+      </c:if>
+    </div>
+    <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
+    <input type="password" name="pwd" placeholder="비밀번호">
+    <input type="hidden" name="toURL" value="${param.toURL}">
+    <button>로그인</button>
+    <div>
+      <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디 기억</label> |
+      <a href="">비밀번호 찾기</a> |
+      <a href="">회원가입</a>
+    </div>
+  </form>
 </div>
-<form action="<c:url value="/login/login"/>" method="post" onsubmit="return formCheck(this);">
-  <h3 id="title">Login</h3>
-  <div id="msg">
-    <c:if test="${not empty param.msg}">
-      <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
-    </c:if>
-  </div>
-  <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
-  <input type="password" name="pwd" placeholder="비밀번호">
-  <input type="hidden" name="toURL" value="${param.toURL}">
-  <button>로그인</button>
-  <div>
-    <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디 기억</label> |
-    <a href="">비밀번호 찾기</a> |
-    <a href="">회원가입</a>
-  </div>
-  <script>
+<c:import url="../views/include/footer.jsp" charEncoding="UTF-8" />
+<script>
     function formCheck(frm) {
       let msg ='';
       if(frm.id.value.length==0) {

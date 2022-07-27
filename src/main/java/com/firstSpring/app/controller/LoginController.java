@@ -1,6 +1,7 @@
 package com.firstSpring.app.controller;
 
 import java.net.URLEncoder;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/login")
@@ -83,4 +85,11 @@ public class LoginController {
         return user!=null && user.getPwd().equals(pwd);
 //        return "asdf".equals(id) && "1234".equals(pwd);
     }
+
+    @GetMapping(value = "/registerform")
+    public String registerForm() throws Exception {
+        return "registerForm";
+    }
+
+
 }
