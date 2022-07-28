@@ -16,7 +16,7 @@
 <c:import url="../views/include/header.jsp" charEncoding="UTF-8" />
 <div id="wrap">
   <form action="<c:url value="/login/login"/>" method="post" onsubmit="return formCheck(this);">
-    <h3 id="title">Login</h3>
+    <h3 id="title">로그인</h3>
     <div id="msg">
       <c:if test="${not empty param.msg}">
         <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
@@ -28,8 +28,7 @@
     <button>로그인</button>
     <div>
       <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디 기억</label> |
-      <a href="">비밀번호 찾기</a> |
-      <a href="">회원가입</a>
+      <a href="<c:url value='/login/registerform'/>">회원가입</a>
     </div>
   </form>
 </div>

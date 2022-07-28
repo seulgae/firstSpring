@@ -16,7 +16,7 @@
 <c:import url="../views/include/header.jsp" charEncoding="UTF-8" />
 <div id="wrap">
 <form action="<c:url value="/register/save"/>" method="post" onsubmit="return formCheck(this)">
-    <div class="title">Register</div>
+    <div class="title">회원가입</div>
     <div id="msg" class="msg">
         <c:if test="${not empty param.msg}">
             <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
