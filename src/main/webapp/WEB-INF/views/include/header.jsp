@@ -3,7 +3,7 @@
 <%@ page session="false"%>
 <c:set var="loginId" value="${pageContext.request.getSession(false)==null ? '' : pageContext.request.session.getAttribute('id')}"/>
 <c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'ID='+=loginId}"/>
+<c:set var="loginOut" value="${loginId=='' ? '로그인' : loginId}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +17,11 @@
 <div id="menu">
   <ul>
     <li id="logo"><a href="<c:url value='/'/>">SeulgaeToyProject</a></li>
-    <li><a href="<c:url value='/'/>">Info</a></li>
-    <li><a href="<c:url value='/board/list'/>">Portfolio</a></li>
-    <li><a href="<c:url value='/board/list'/>"></a></li>
+    <li><a href="<c:url value='/'/>">소개</a></li>
+    <li><a href="<c:url value='/board/list'/>">포트폴리오</a></li>
+    <li><a href="<c:url value=''/>">방명록</a></li>
     <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
-    <li><a href="<c:url value='/login/registerform'/>">Sing in</a></li>
+    <li><a href="<c:url value='/login/registerform'/>">회원가입</a></li>
     <%--        <li><a href=""><i class="fa fa-search"></i></a></li>--%>
   </ul>
 </div>

@@ -24,19 +24,20 @@ public class LoginController {
     @Autowired
     UserDao userDao;
 
+    //로그인
     @GetMapping("/login")
     public String loginForm() {
         return "loginForm";
     }
 
+    // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        // 1. 세션을 종료
         session.invalidate();
-        // 2. 홈으로 이동
         return "redirect:/";
     }
 
+    //
     @PostMapping("/login")
     public String login(String id, String pwd, String toURL, boolean rememberId,
                         HttpServletRequest request, HttpServletResponse response) throws Exception {
