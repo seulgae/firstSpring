@@ -18,8 +18,8 @@
   <ul>
     <li id="logo"><a href="<c:url value='/'/>">SeulgaeToyProject</a></li>
     <li><a href="<c:url value='/'/>">소개</a></li>
-    <li><a href="<c:url value='/board/list'/>">포트폴리오</a></li>
-    <li><a href="<c:url value=''/>">방명록</a></li>
+    <li><a href="<c:url value='/'/>">포트폴리오</a></li>
+    <li><a href="<c:url value='/board/list'/>">방명록</a></li>
     <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
     <li><a href="<c:url value='/login/registerform'/>">회원가입</a></li>
     <%--        <li><a href=""><i class="fa fa-search"></i></a></li>--%>

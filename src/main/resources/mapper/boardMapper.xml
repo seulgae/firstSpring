@@ -18,7 +18,7 @@
         INSERT INTO board
             (title, content, writer)
         VALUES
-            ('${title}', '${content}', '${writer}')
+            (#{title}, #{content}, #{writer})
     </insert>
 
     <update id="update" parameterType="BoardDto">
@@ -28,6 +28,11 @@
           , up_date = now()
         WHERE bno = #{bno}
     </update>
+
+    <!-- 관리자 삭제할 수 있는 SQL문. -->
+    <delete id="deleteForAdmin">
+        DELETE FROM board WHERE bno = #{bno}
+    </delete>
 
     <delete id="delete">
         DELETE FROM board WHERE bno = #{bno} and writer = #{writer}
@@ -39,6 +44,14 @@
         ORDER BY reg_date DESC, bno DESC
     </select>
 
+    <select id="selectPage" parameterType="map" resultType="BoardDto">
+        SELECT bno, title, content, writer, view_cnt, comment_cnt, reg_date
+        FROM board
+        ORDER BY reg_date DESC, bno DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <!-- 조회수 -->
     <update id="increaseViewCnt" parameterType="int">
         UPDATE board
         SET   view_cnt = view_cnt + 1
