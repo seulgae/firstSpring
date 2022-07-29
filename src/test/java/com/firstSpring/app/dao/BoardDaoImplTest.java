@@ -29,16 +29,23 @@ public class BoardDaoImplTest {
             boardDao.insert(boardDto);
         }
 
+        // 제목 검색
         SearchCondition sc = new SearchCondition(1, 10, "title2", "T"); // title1%
         List<BoardDto> list = boardDao.searchSelectPage(sc);
 //        System.out.println("list = " + list);
         assertTrue(list.size()==2); // 1~20, title2, title20
-        
+
+        // 글쓴이 검색
+        sc = new SearchCondition(1, 10, "asdf2", "W"); // asdf2%
+        list = boardDao.searchSelectPage(sc);
+//        System.out.println("list = " + list);
+        assertTrue(list.size()==2); // 1~20, asdf2, asdf20
     }
 
     @Test
     public void searchResultCntTest() throws Exception {
         boardDao.deleteAll();
+
         for (int i = 0; i <= 20; i++) {
             BoardDto boardDto = new BoardDto("title"+i, "asdfadfassdf", "asdf"+i);
             boardDao.insert(boardDto);
@@ -47,8 +54,12 @@ public class BoardDaoImplTest {
         int cnt = boardDao.searchResultCnt(sc);
         System.out.println("cnt = " + cnt);
         assertTrue(cnt==2); // 1~20, title2, title20
-    }
 
+        sc = new SearchCondition(1, 10, "asdf2", "W"); // title1%
+        cnt = boardDao.searchResultCnt(sc);
+        System.out.println("cnt = " + cnt);
+        assertTrue(cnt==2); // 1~20, title2, title20
+    }
 
     // 게시물 생성 테스트
     @Test

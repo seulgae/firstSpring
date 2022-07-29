@@ -10,8 +10,7 @@
     <meta charset="UTF-8">
     <title>Seulgae</title>
     <link rel="stylesheet" href="<c:url value='/css/board.css'/>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 </head>
 <body>
@@ -26,15 +25,14 @@
     <form id="form" class="frm" action="" method="post">
         <input type="hidden" name="bno" value="${boardDto.bno}">
 
-        <input name="title" type="text" value="${boardDto.title}" placeholder="  제목을 입력해 주세요." ${mode=="new" ? "" : "readonly='readonly'"}><br>
-        <textarea name="content" rows="20" placeholder=" 내용을 입력해 주세요." ${mode=="new" ? "" : "readonly='readonly'"}>${boardDto.content}</textarea><br>
-
+        <input name="title" type="text" value="<c:out value='${boardDto.title}'/>" placeholder="  제목을 입력해 주세요." ${mode=="new" ? "" : "readonly='readonly'"}><br>
+        <textarea name="content" rows="20" placeholder=" 내용을 입력해 주세요." ${mode=="new" ? "" : "readonly='readonly'"}><c:out value="${boardDto.content}"/></textarea><br>
 
         <c:if test="${mode eq 'new'}">
-            <button type="button" id="writeBtn" class="btn btn-write"><i class="fa fa-comment"></i> 등록</button>
+            <button type="button" id="writeBtn" class="btn btn-write"><i class="fa fa-pencil-square"></i> 등록</button>
         </c:if>
         <c:if test="${mode ne 'new'}">
-            <button type="button" id="writeNewBtn" class="btn btn-write"><i class="fa fa-edit"></i> 글쓰기</button>
+            <button type="button" id="writeNewBtn" class="btn btn-write"><i class="fa fa-pencil-square"></i> 글쓰기</button>
         </c:if>
         <c:if test="${boardDto.writer eq loginId}">
             <button type="button" id="modifyBtn" class="btn btn-modify"><i class="fa fa-edit"></i> 수정</button>
@@ -43,8 +41,6 @@
         <button type="button" id="listBtn" class="btn btn-list"><i class="fa fa-bars"></i> 목록</button>
     </form>
 </div>
-<br>
-<c:import url="../views/include/footer.jsp" charEncoding="UTF-8" />
 <script>
     $(document).ready(function(){
         let formCheck = function() {
@@ -79,11 +75,11 @@
                 $(".writing-header").html("게시판 수정");
                 $("input[name=title]").attr('readonly', false);
                 $("textarea").attr('readonly', false);
-                $("#modifyBtn").html("<i class='fa fa-pencil'></i> 등록");
+                $("#modifyBtn").html("<i class='fa fa-pencil-square'></i> 등록");
                 return;
             }
             // 2. 수정 상태이면, 수정된 내용을 서버로 전송
-            form.attr("action", "<c:url value='/board/modify?page=${page}&pageSize=${pageSize}'/>");
+            form.attr("action", "<c:url value='/board/modify${searchCondition.queryString}'/>");
             form.attr("method", "post");
             if(formCheck())
                 form.submit();
@@ -91,12 +87,12 @@
         $("#removeBtn").on("click", function(){
             if(!confirm("정말로 삭제하시겠습니까?")) return;
             let form = $("#form");
-            form.attr("action", "<c:url value='/board/remove?page=${page}&pageSize=${pageSize}'/>");
+            form.attr("action", "<c:url value='/board/remove${searchCondition.queryString}'/>");
             form.attr("method", "post");
             form.submit();
         });
         $("#listBtn").on("click", function(){
-            location.href="<c:url value='/board/list?page=${page}&pageSize=${pageSize}'/>";
+            location.href="<c:url value='/board/list${searchCondition.queryString}'/>";
         });
     });
 </script>

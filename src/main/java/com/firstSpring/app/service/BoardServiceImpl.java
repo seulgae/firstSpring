@@ -2,6 +2,7 @@ package com.firstSpring.app.service;
 
 import com.firstSpring.app.dao.BoardDao;
 import com.firstSpring.app.domain.BoardDto;
+import com.firstSpring.app.domain.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +50,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int modify(BoardDto boardDto) throws Exception {
         return boardDao.update(boardDto);
+    }
+
+    @Override
+    public List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception {
+        return boardDao.searchSelectPage(sc);
+    }
+
+    @Override
+    public int getSearchResultCnt(SearchCondition sc) throws Exception {
+        return boardDao.searchResultCnt(sc);
     }
 }
