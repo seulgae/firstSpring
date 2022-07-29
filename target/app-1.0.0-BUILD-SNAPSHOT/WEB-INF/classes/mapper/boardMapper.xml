@@ -26,7 +26,7 @@
         SET   title   = #{title}
           , content = #{content}
           , up_date = now()
-        WHERE bno = #{bno}
+        WHERE bno = #{bno} and writer = #{writer}
     </update>
 
     <!-- 관리자 삭제할 수 있는 SQL문. -->
