@@ -1,6 +1,7 @@
 package com.firstSpring.app.dao;
 
 import com.firstSpring.app.domain.BoardDto;
+import com.firstSpring.app.domain.SearchCondition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,35 @@ public class BoardDaoImplTest {
 
     @Autowired
     BoardDao boardDao;
+
+    @Test
+    public void searchSelectPageTest() throws Exception {
+        boardDao.deleteAll();
+        for (int i = 0; i <= 20; i++) {
+            BoardDto boardDto = new BoardDto("title"+i, "asdfadfassdf", "asdf"+i);
+            boardDao.insert(boardDto);
+        }
+
+        SearchCondition sc = new SearchCondition(1, 10, "title2", "T"); // title1%
+        List<BoardDto> list = boardDao.searchSelectPage(sc);
+//        System.out.println("list = " + list);
+        assertTrue(list.size()==2); // 1~20, title2, title20
+        
+    }
+
+    @Test
+    public void searchResultCntTest() throws Exception {
+        boardDao.deleteAll();
+        for (int i = 0; i <= 20; i++) {
+            BoardDto boardDto = new BoardDto("title"+i, "asdfadfassdf", "asdf"+i);
+            boardDao.insert(boardDto);
+        }
+        SearchCondition sc = new SearchCondition(1, 10, "title2", "T"); // title1%
+        int cnt = boardDao.searchResultCnt(sc);
+        System.out.println("cnt = " + cnt);
+        assertTrue(cnt==2); // 1~20, title2, title20
+    }
+
 
     // 게시물 생성 테스트
     @Test
