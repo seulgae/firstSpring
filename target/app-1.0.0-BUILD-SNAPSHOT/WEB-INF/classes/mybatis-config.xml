@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias alias="User" type="com.firstSpring.app.domain.User"/>
         <typeAlias alias="BoardDto" type="com.firstSpring.app.domain.BoardDto"/>
         <typeAlias alias="SearchCondition" type="com.firstSpring.app.domain.SearchCondition"/>
     </typeAliases>

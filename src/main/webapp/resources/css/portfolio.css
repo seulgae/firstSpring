@@ -1,0 +1,65 @@
+div#menu{
+    background-color: #000000;
+}
+* {
+    box-sizing: border-box;
+    margin : 0;
+    padding: 0;
+}
+
+a { text-decoration: none;  }
+
+ul {
+    list-style-type: none;
+    height: 55px;
+    width: 1000px;
+    display: flex;
+    margin: 0px auto;
+}
+
+ul > li {
+    color: lightgray;
+    height : 100%;
+    width:100px;
+    display:flex;
+    align-items: center;
+}
+
+ul > li > a {
+    color: lightgray;
+    margin:auto;
+    padding: 10px;
+    font-size:15px;
+    align-items: center;
+}
+
+ul > li > a:hover {
+    color :white;
+    border-bottom: 3px solid rgb(209, 209, 209);
+}
+
+#logo {
+    color:white;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left:40px;
+    margin-right:auto;
+    display: flex;
+}
+
+div#slide {    /* 이미지 1개의 크기를 적용 */
+    width: 1500px;
+    height: 800px;
+
+    margin: 0px auto;
+    overflow: hidden;
+    /* 부모요소 영역보다 더 큰 자식요소의
+    범람한 외부영역을 숨겨줌*/
+    /* 슬라이드쇼 방향키의 위치기준을
+    적용하기 위한 포지션 */
+    position: relative;
+}
+div.swiper-button-prev,
+div.swiper-button-next{
+    color:#d3d3d3;
+}

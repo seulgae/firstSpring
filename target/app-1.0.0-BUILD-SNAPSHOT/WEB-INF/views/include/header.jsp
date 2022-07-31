@@ -3,7 +3,7 @@
 <%@ page session="false"%>
 <c:set var="loginId" value="${pageContext.request.getSession(false)==null ? '' : pageContext.request.session.getAttribute('id')}"/>
 <c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? '로그인' : loginId}"/>
+<c:set var="loginOut" value="${loginId=='' ? '로그인' : '로그아웃'}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +18,10 @@
   <ul>
     <li id="logo"><a href="<c:url value='/'/>">SeulgaeToyProject</a></li>
     <li><a href="<c:url value='/'/>">소개</a></li>
-    <li><a href="<c:url value='/'/>">포트폴리오</a></li>
+    <li><a href="<c:url value='/portFolio'/>">포트폴리오</a></li>
     <li><a href="<c:url value='/board/list'/>">방명록</a></li>
     <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
-    <li><a href="<c:url value='/login/registerform'/>">회원가입</a></li>
+    <li><a href="<c:url value='/register/add'/>">회원가입</a></li>
     <%--        <li><a href=""><i class="fa fa-search"></i></a></li>--%>
   </ul>
 </div>

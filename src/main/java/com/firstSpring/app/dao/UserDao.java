@@ -3,10 +3,15 @@ package com.firstSpring.app.dao;
 import com.firstSpring.app.domain.*;
 
 public interface UserDao {
-    User selectUser(String id) throws Exception;
-    int deleteUser(String id) throws Exception;
-    int insertUser(User user) throws Exception;
-    int updateUser(User user) throws Exception;
+    int insert(User user) throws Exception;
+
+    User select(String id) throws Exception;
+
+    int update(User user) throws Exception;
+
+    int delete(String id) throws Exception;
+
     int count() throws Exception;
-    void deleteAll() throws Exception;
+
+    int deleteAll() throws Exception;
 }

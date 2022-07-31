@@ -3,7 +3,7 @@
 <%@ page session="true"%>
 <c:set var="loginId" value="${sessionScope.id}"/>
 <c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'ID='+=loginId}"/>
+<c:set var="loginOut" value="${loginId=='' ? '로그인' : '로그아웃'}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +17,11 @@
 <c:import url="../views/include/header.jsp" charEncoding="UTF-8" />
 <script>
     let msg = "${msg}";
-    if(msg=="WRT_ERR") alert("게시물 등록에 실패하였습니다. 다시 시도해 주세요.");
-    if(msg=="MOD_ERR") alert("게시물 수정에 실패하였습니다. 다시 시도해 주세요.");
+    if(msg=="WRT_ERR") alert("방명록 등록에 실패하였습니다. 다시 시도해 주세요.");
+    if(msg=="MOD_ERR") alert("방명록 수정에 실패하였습니다. 다시 시도해 주세요.");
 </script>
 <div class="container">
-    <h2 class="writing-header">게시판 ${mode=="new" ? "글쓰기" : "읽기"}</h2>
+    <h2 class="writing-header">방명록 ${mode=="new" ? "쓰기" : "읽기"}</h2>
     <form id="form" class="frm" action="" method="post">
         <input type="hidden" name="bno" value="${boardDto.bno}">
 
@@ -72,7 +72,7 @@
             let isReadonly = $("input[name=title]").attr('readonly');
             // 1. 읽기 상태이면, 수정 상태로 변경
             if(isReadonly=='readonly') {
-                $(".writing-header").html("게시판 수정");
+                $(".writing-header").html("방명록 수정");
                 $("input[name=title]").attr('readonly', false);
                 $("textarea").attr('readonly', false);
                 $("#modifyBtn").html("<i class='fa fa-pencil-square'></i> 등록");

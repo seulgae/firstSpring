@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <c:set var="loginId" value="${sessionScope.id}"/>
 <c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'ID='+=loginId}"/>
+<c:set var="loginOut" value="${loginId=='' ? '로그인' : '로그아웃'}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 <c:import url="../views/include/header.jsp" charEncoding="UTF-8" />
 <script>
     let msg = "${msg}";
-    if(msg=="LIST_ERR")  alert("게시물 목록을 가져오는데 실패했습니다. 다시 시도해 주세요.");
+    if(msg=="LIST_ERR")  alert("방명록 목록을 가져오는데 실패했습니다. 다시 시도해 주세요.");
     if(msg=="READ_ERR")  alert("삭제되었거나 없는 게시물입니다.");
     if(msg=="DEL_ERR")   alert("삭제되었거나 없는 게시물입니다.");
     if(msg=="DEL_OK")    alert("성공적으로 삭제되었습니다.");
@@ -70,7 +70,7 @@
         <div class="paging-container">
             <div class="paging">
                 <c:if test="${totalCnt==null || totalCnt==0}">
-                    <div> 게시물이 없습니다. </div>
+                    <div> 방명록이 없습니다. </div>
                 </c:if>
                 <c:if test="${totalCnt!=null && totalCnt!=0}">
                     <c:if test="${ph.showPrev}">

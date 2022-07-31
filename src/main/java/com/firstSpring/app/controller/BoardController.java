@@ -27,6 +27,8 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
+
+
     @PostMapping("/modify")
     public String modify(BoardDto boardDto, Model m,HttpSession session, RedirectAttributes rattr){
         String writer = (String)session.getAttribute("id");
