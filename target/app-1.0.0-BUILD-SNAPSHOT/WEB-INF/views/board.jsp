@@ -41,6 +41,9 @@
         <button type="button" id="listBtn" class="btn btn-list"><i class="fa fa-bars"></i> 목록</button>
     </form>
 </div>
+<div id="comment">
+    <c:import url="../views/test.jsp" charEncoding="UTF-8" />
+</div>
 <script>
     $(document).ready(function(){
         let formCheck = function() {
