@@ -21,10 +21,10 @@
     <div class="swiper-container">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide"><img src="<c:url value='/img/slide/slide1.jpg'/>" width="1500px" height="800px"></div>
-            <div class="swiper-slide"><img src="<c:url value='/img/slide/slide2.jpg'/>" width="1500px" height="800px"></div>
-            <div class="swiper-slide"><img src="<c:url value='/img/slide/slide3.jpg'/>" width="1500px" height="800px"></div>
+            <c:forEach var="cnt" begin="1" end="4" >
+                <!-- Slides -->
+                <div class="swiper-slide"><img src="<c:url value='/img/slide/slide${cnt}.jpg'/>" width="1500px" height="800px"></div>
+            </c:forEach>
         </div>
 
         <!-- If we need pagination 페이지 네이션을 제공-->
