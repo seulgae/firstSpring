@@ -28,6 +28,6 @@ public class RegisterController {
     public String save(@Valid User user, BindingResult result, Model m) throws Exception {
         System.out.println("result = " + result);
         int rowCnt = userService.write(user);
-        return "registerForm";
+        return "redirect:/";
     }
 }
